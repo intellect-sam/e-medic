@@ -2,8 +2,11 @@
   "compilerOptions": {
     "target": "ESNext",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "module": "ESNext",
+    "module": "commonjs",
     "skipLibCheck": true,
+    "types": ["styled-components", "@types/node", "@types/prop-types", "node", "module"],
+    "typeRoots": ["./node_modules/@types"],
+
 
     /* Bundler mode */
     "moduleResolution": "bundler",

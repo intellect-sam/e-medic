@@ -1,35 +1,74 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+import { Routes, Route } from "react-router-dom";
+import styled from "styled-components";
+import { ThemeProvider } from "styled-components";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { GlobalStyles, theme } from "./styles/globalStyles";
+import { MainLayout } from './Layouts';
+import { MainDashboardLayout } from './Layouts';
 
+import Login from "./main/components/Auth/Login"
+
+import {
+  Home,
+  About,
+  PricingPage,
+
+} from "./main/pages";
+import DashboardFrame from "./main/components/Dashboard/dashboardFrame";
+
+import SignUp from "./main/components/Auth/Signup";
+
+
+export interface IApplicationProps {}
+
+
+const App: React.FunctionComponent<IApplicationProps> = () => {
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+       <ThemeProvider theme={theme}>
+        <GlobalStyles />
+      <Routes>
+          <Route element={<MainLayout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/about-us" element={<About />} />
+            <Route path="/pricing" element={<PricingPage />} />
+          </Route>
+          <Route element={<MainDashboardLayout />}>
+            <Route path="/dashboard" element={<DashboardFrame/>} />
+
+          </Route>
+            <Route path="/login" element={<Login/>}/>
+            <Route path="/register" element={<SignUp/>}/>
+ 
+      </Routes>
+      </ThemeProvider>
+      <StyledToastContainer />
     </>
   )
 }
 
 export default App
+
+
+const StyledToastContainer = styled(ToastContainer).attrs({
+  className: "toast-container",
+  toastClassName: "toast",
+  bodyClassName: "body",
+  progressClassName: "progress",
+})`
+  button[aria-label="close"] {
+    display: none;
+  }
+
+  /* .body is passed to bodyClassName */
+  .body {
+    font-family: inherit;
+    font-size: 14px;
+  }
+
+  /* .progress is passed to progressClassName */
+  .progress {
+  }
+`;

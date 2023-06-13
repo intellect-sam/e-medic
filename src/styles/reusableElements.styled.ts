@@ -82,7 +82,7 @@ export const Button = styled.button<ButtonProps>`
   outline: none;
 
   &:hover {
-    background-color: #106ebe;
+    background-color: #020c24;
     color: #fff;
   }
 

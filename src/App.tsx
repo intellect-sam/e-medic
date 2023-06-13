@@ -7,7 +7,6 @@ import "react-toastify/dist/ReactToastify.css";
 import { GlobalStyles, theme } from "./styles/globalStyles";
 import { MainLayout } from './Layouts';
 import { MainDashboardLayout } from './Layouts';
-
 import Login from "./main/components/Auth/Login"
 
 import {
@@ -37,7 +36,6 @@ const App: React.FunctionComponent<IApplicationProps> = () => {
           </Route>
           <Route element={<MainDashboardLayout />}>
             <Route path="/dashboard" element={<DashboardFrame/>} />
-
           </Route>
             <Route path="/login" element={<Login/>}/>
             <Route path="/register" element={<SignUp/>}/>

@@ -1,12 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import Logo from "../../../components/Logo";
-import { Link } from "react-router-dom";
 
 const HeaderDashboard:React.FC =  () => {
     return (
         <DashboardContainer>
             <SectionUp>
+                
                
             </SectionUp>
         </DashboardContainer>
